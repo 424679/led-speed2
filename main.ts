@@ -44,15 +44,7 @@ function led2 (y: number, speed: number) {
     }
 }
 input.onButtonPressed(Button.B, function () {
-    if (direction == 3) {
-        direction = 0
-    } else if (direction == 0) {
-        direction += 1
-    } else if (direction == 1) {
-        direction += 1
-    } else if (direction == 2) {
-        direction += 1
-    }
+    direction += 1
 })
 let direction = 0
 let list: number[][] = []
@@ -93,6 +85,17 @@ list = [
 0
 ]
 ]
+basic.forever(function () {
+    if (direction % 4 == 0) {
+        direction = 0
+    } else if (direction % 4 == 1) {
+        direction = 1
+    } else if (direction % 4 == 2) {
+        direction = 2
+    } else if (direction % 4 == 3) {
+        direction = 3
+    }
+})
 control.inBackground(function () {
     led2(0, 1000)
 })
